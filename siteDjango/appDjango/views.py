@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.views import View
-
+from .base import *
 
 
 class Login(View):
     def get(self, request):
-        context = {}
-        return render(request, 'login.html', context=context)
+        o_provider = get_provider()
 
+        context = {
+            'Providers': o_provider
+        }
+        return render(request, 'login.html', context=context)
